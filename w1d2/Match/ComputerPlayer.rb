@@ -28,12 +28,10 @@ class ComputerPlayer
 
     if !known_matches.empty?
       guess = self.known_matches.shift
-      # guesses.delete_if {|el| el == guess}
+      known_cards.delete(guess)
     else
-      # guess = [rand(4), rand(4)]
       guess = guesses.sample
       until intelligent_guess?(guess)
-        # guess = [rand(4), rand(4)]
         guesses.delete_if {|el| el == guess}
         guess = guesses.sample
       end
