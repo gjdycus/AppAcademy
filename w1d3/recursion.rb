@@ -24,7 +24,7 @@ def exp_2(b, n)
   return 1 if n == 0
   return b if n == 1
   if n.even?
-    first_half = exp_2(b, (n/2))
+    first_half = exp_2(b, (n / 2))
     return first_half * first_half
   else
     first_half = exp_2(b, ((n-1)/2))
