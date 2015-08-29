@@ -28,7 +28,7 @@ class Board
   end
 
   def render
-    puts "-----------------"
+    puts "----------------"
     @grid.length.times do |idx1|
       @grid.length.times do |idx2|
         print @grid[idx1][idx2]
