@@ -6,9 +6,9 @@ require 'yaml'
 class MinesweeperGame
 
   attr_reader :board, :player
-  def initialize(name)
+  def initialize
+    @player = Player.new
     @board = Board.new
-    @player = Player.new(name)
   end
 
   def play
@@ -17,7 +17,7 @@ class MinesweeperGame
     end
 
     board.reveal_all if lost?
-    
+
     system("clear")
     board.display
     puts outcome_message
@@ -27,7 +27,7 @@ class MinesweeperGame
     system("clear")
     board.display
     input = player.make_guess
-    
+
     if input == "save"
       save
     else
@@ -73,7 +73,7 @@ class MinesweeperGame
   end
 
   def outcome_message
-    lost? ? "KABOOM" : "Hoorah"
+    lost? ? "KABOOM!!!" : "You won! Maybe you're not so unskilled after all!"
   end
 
 
@@ -83,7 +83,7 @@ if __FILE__ == $PROGRAM_NAME
   if ARGV[0]
     YAML.load_file(ARGV.shift).play
   else
-    game = MinesweeperGame.new("Roger")
+    game = MinesweeperGame.new
     game.play
   end
 end

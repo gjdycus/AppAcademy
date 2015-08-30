@@ -42,7 +42,6 @@ def fibonacci_recursion(n)
   return [] if n == 0
   return [1] if n == 1
   last_arr = fibonacci_recursion(n-1)
-  # second_to_last_number = fibonacci_recursion(n-2).last || 0
   second_to_last_number = last_arr[-2] || 0
 
   last_arr << second_to_last_number + last_arr.last

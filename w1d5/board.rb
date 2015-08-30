@@ -19,7 +19,7 @@ class Board
                     8 => :light_green
                     }
 
-  def initialize(bomb_count = 15)
+  def initialize(bomb_count = 12)
     @grid = Array.new(9) {Array.new(9)}
     add_tiles
     create_neighbors
@@ -27,7 +27,9 @@ class Board
   end
 
   def display
-    grid.each do |row|
+    puts " 0 1 2 3 4 5 6 7 8"
+    grid.each_with_index do |row, index|
+      print index
       puts row.map {|tile| render_tile(tile) }.join(" ")
     end
   end
