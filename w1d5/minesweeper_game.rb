@@ -12,15 +12,19 @@ class MinesweeperGame
   end
 
   def play
+    begin_time = Time.now
     until over?
       play_turn
     end
 
     board.reveal_all if lost?
 
+    finish_time = Time.now
+
     system("clear")
     board.display
     puts outcome_message
+    puts "You finished in #{(finish_time - begin_time) / 60.0} minutes." if won?
   end
 
   def play_turn
