@@ -1,0 +1,45 @@
+
+<form action = "/cats/<%= @cat.id %>" method = "POST">
+  <% if @cat.persisted? %>
+    <input type = "hidden" name = "_method" value = "PATCH">
+  <% end %>
+
+  <label for = "cat_name">Name</label>
+  <input type = "text" name = "cat[name]" id = "cat_name" value = "<%= @cat.name %>">
+  <br>
+  <br>
+
+  <label for = "cat_birth_date">Date of Birth</label>
+  <input type = "date" name = "cat[birth_date]" id = "cat_birth_date" value = "<%= @cat.birth_date %>">
+  <br>
+  <br>
+
+  <label>Sex</label>
+  <div>
+    <input type = "radio" name = "cat[sex]" id = "cat_sex_m" value = "M" <%= "checked" if @cat.sex == "M" %>>
+    <label for = "cat_sex_m">Male</label>
+    <input type = "radio" name = "cat[sex]" id = "cat_sex_f" value = "F" <%= "checked" if @cat.sex == "F" %>>
+    <label for = "cat_sex_f">Female</label>
+  </div>
+  <br>
+  <br>
+
+  <label for = "cat_coat_color">Coat Color</label>
+  <select name = "cat[color]">
+    <option></option>
+    <option value = "Black" <%= "selected" if @cat.color == "Black" %>>Black</option>
+    <option value = "White" <%= "selected" if @cat.color == "White" %>>White</option>
+    <option value = "Calico" <%= "selected" if @cat.color == "Calico" %>>Calico</option>
+  </select>
+  <br>
+  <br>
+
+  <label for = "cat_description">Description</label>
+  <textarea name = "cat[description]" id = "cat_description"><%= @cat.description %></textarea>
+  <br>
+  <br>
+
+  <input type = "submit" value = "Enter">
+</form>
+<br>
+<%= link_to "Cancel", :back %>
