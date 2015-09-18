@@ -1,0 +1,33 @@
+<% method = track.persisted? ? "PATCH" : "POST" %>
+<% action = track.persisted? ? track_url(track) : tracks_url %>
+
+<form action=<%= action %> method="POST">
+  <input type="hidden" name="_method" value=<%= method %>>
+  <input type="hidden" name="track[album_id]" value=<%= album_id %>>
+  <%= auth_token %>
+
+  <label for="track_name">Track Name</label>
+  <br>
+  <input type="text" name="track[name]" id="track_name" value="<%= track.name %>">
+  <br>
+  <br>
+
+  <label for="track_type">Type</label>
+  <br>
+  <div>
+    <input type="radio" name="track[ttype]" value="Regular" <%= "checked" if track.ttype == "Regular" %>>Regular<br>
+    <input type="radio" name="track[ttype]" value="Bonus" <%= "checked" if track.ttype == "Bonus" %>>Bonus<br>
+  </div>
+  <br>
+
+  <label for="track_lyrics">Lyrics</label>
+  <br>
+  <textarea name="track[lyrics]" id="track_lyrics" rows="25" cols="60"><%= track.lyrics %></textarea>
+  <br>
+  <br>
+
+  <input type="submit" value="Submit">
+</form>
+<br>
+
+<%= link_to "Cancel", :back %>

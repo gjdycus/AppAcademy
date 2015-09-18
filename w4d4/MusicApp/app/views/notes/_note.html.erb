@@ -1,0 +1,8 @@
+<% if note.user == current_user %>
+  <%= link_to "Delete", track_note_url(note.track, note), method: :delete %>
+<% end %>
+<bold><%= note.user.email %> said:</bold>
+<br>
+<p><%= note.body %></p>
+<br>
+<br>
