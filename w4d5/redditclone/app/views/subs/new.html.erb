@@ -1,0 +1,15 @@
+<h1>NEW SUB PAGE</h1>
+
+<form class="" action="<%=subs_url%>" method="post">
+  <%= auth_token %>
+  <label for="sub_title">Title</label>
+  <br>
+    <input type="text" name="sub[title]" id="sub_title">
+    <br>
+  <label for="sub_description">Description</label>
+  <br>
+    <textarea name="sub[description]" rows="8" cols="40" id="sub_description"></textarea>
+    <br>
+
+  <input type="submit" value="MAKE A SUB">
+</form>
