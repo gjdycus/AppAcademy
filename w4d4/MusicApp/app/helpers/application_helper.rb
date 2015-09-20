@@ -1,4 +1,11 @@
 module ApplicationHelper
+  def ugly_lyrics(lyrics)
+    lyrics.split("\n").map do |line|
+      next if line.blank?
+      "♫ #{line}"
+    end.join("\n")
+  end
+
   def auth_token
     auth = <<-HTML
     <input type='hidden'
@@ -7,12 +14,5 @@ module ApplicationHelper
     HTML
 
     auth.html_safe
-  end
-
-  def ugly_lyrics(lyrics)
-    lyrics.split("\n").map do |line|
-      next if line.blank?
-      "♫ #{line}"
-    end.join("\n")
   end
 end
