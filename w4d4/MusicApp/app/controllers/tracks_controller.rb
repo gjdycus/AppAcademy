@@ -5,7 +5,7 @@ class TracksController < ApplicationController
     @track = Track.new(track_params)
 
     if @track.save
-      redirect_to album_url(@track.album)
+      redirect_to track_url(@track)
     else
       flash.now[:errors] = @track.errors.full_messages
       render :new

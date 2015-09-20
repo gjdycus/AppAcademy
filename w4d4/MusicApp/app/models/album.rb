@@ -12,6 +12,7 @@
 
 class Album < ActiveRecord::Base
   validates :name, :band_id, :ttype, presence: true
+  validates :ttype, inclusion: ["Live", "Studio"]
 
   belongs_to :band,
     class_name: "Band",

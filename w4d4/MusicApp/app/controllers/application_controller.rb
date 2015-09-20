@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def require_log_in
     unless logged_in?
-      flash[:errors] = ["You must be logged in to view this page"]
+      flash[:errors] = ["Log in for access"]
       redirect_to new_session_url
     end
   end
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   def require_not_logged_in
     if logged_in?
       flash[:errors] = ["You are already logged in"]
-      redirect_to user_url(current_user)
+      redirect_to bands_url
     end
   end
 end
